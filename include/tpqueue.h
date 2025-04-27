@@ -17,7 +17,7 @@ class TPQueue {
         }
     }
 
-    void push(T& item) {
+    void push(T&& item) {
         T* newItem = new T*(std::move(item));
         if (isEmpty()) {
             head = tail = newItem;
@@ -50,7 +50,7 @@ class TPQueue {
             head = tail = nullptr;
         }
         if (isEmpty()) {
-            throw "List is empty!";
+            throw ("List is empty!");
         }
 
         T* temp = head;
