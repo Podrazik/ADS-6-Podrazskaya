@@ -27,7 +27,7 @@ class TPQueue {
         T* temp = head;
         while (temp != nullptr && temp->prior >= newItem->prior) {
             temp = temp->nextCh;
-        } 
+        }
         if (temp == nullptr) {
             tail->nextCh = newItem;
             newItem->prevCh = tail;
@@ -43,7 +43,7 @@ class TPQueue {
             temp->prevCh = newItem;
         }
     }
-    
+  
     T pop() {
         T* temp = head;
         if (head == tail) {
@@ -51,7 +51,7 @@ class TPQueue {
             return *temp;
         }
         if (isEmpty()) {
-            throw ("List is empty!");
+            throw("List is empty!");
         }
         head = head->nextCh;
         head->prevCh = nullptr;
