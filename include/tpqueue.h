@@ -5,6 +5,7 @@
 
 template<typename T>
 class TPQueue {
+
   T* head;
   T* tail;
 
