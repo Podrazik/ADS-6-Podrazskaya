@@ -1,11 +1,12 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <utility>
 
 template<typename T>
 class TPQueue {
- T* head;
- T* tail;
+  T* head;
+  T* tail;
 
  public:
     TPQueue() : head(nullptr), tail(nullptr) {}
@@ -22,9 +23,9 @@ class TPQueue {
         if (isEmpty()) {
             head = tail = newItem;
         }
-
+     
         T* temp = head;
-        while (temp != nullptr && temp->prior >= newItem->prior ) {
+        while (temp != nullptr && temp->prior >= newItem->prior) {
             temp = temp->nextCh;
         }
         
@@ -32,11 +33,11 @@ class TPQueue {
             tail->nextCh = newItem;
             newItem->prevCh = tail;
             tail = newItem;
-        }else if (temp == head) {
+        } else if (temp == head) {
             newItem->nextCh = head;
             head->prevCh = newItem;
             head = newItem;
-        }else {
+        } else {
             newItem->nextCh = temp;
             newItem->prevCh = temp->prevCh;
             newItem->prevCh->nextCh = newItem;
@@ -44,7 +45,6 @@ class TPQueue {
         }
     }
     
-
     T pop() {
         if (head == tail) {
             head = tail = nullptr;
@@ -57,7 +57,7 @@ class TPQueue {
         head = head->nextCh;
         head->prevCh = nullptr;
 
-        delete temp;
+        return temp;
     }
 
     bool isEmpty() const {
