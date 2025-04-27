@@ -46,14 +46,16 @@ class TPQueue {
     }
     
     T pop() {
+        T* temp = head;
         if (head == tail) {
             head = tail = nullptr;
+            return *temp;
         }
+      
         if (isEmpty()) {
             throw ("List is empty!");
         }
-
-        T* temp = head;
+      
         head = head->nextCh;
         head->prevCh = nullptr;
 
