@@ -5,7 +5,6 @@
 
 template<typename T>
 class TPQueue {
-
   T* head;
   T* tail;
 
@@ -20,7 +19,7 @@ class TPQueue {
     }
 
     void push(T&& item) {
-        T* newItem = new T*(std::move(item));
+        T* newItem = new T(std::move(item));
         if (isEmpty()) {
             head = tail = newItem;
         }
@@ -58,7 +57,7 @@ class TPQueue {
         head = head->nextCh;
         head->prevCh = nullptr;
 
-        return temp;
+        return *temp;
     }
 
     bool isEmpty() const {
