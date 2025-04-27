@@ -17,7 +17,7 @@ class TPQueue {
         }
     }
 
-    void push(const T& item) {
+    void push(T& item) {
         T* newItem = new T*(item);
         if (isEmpty()) {
             head = tail = newItem;
@@ -38,7 +38,7 @@ class TPQueue {
             head = newItem;
         }else {
             newItem->nextCh = temp;
-            newItem->prevCh = temp.prevCh;
+            newItem->prevCh = temp->prevCh;
             newItem->prevCh->nextCh = newItem;
             temp->prevCh = newItem;
         }
