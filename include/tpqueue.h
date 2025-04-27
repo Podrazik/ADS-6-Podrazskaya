@@ -43,7 +43,6 @@ class TPQueue {
             temp->prevCh = newItem;
         }
     }
-  
     T pop() {
         T* temp = head;
         if (head == tail) {
