@@ -22,13 +22,12 @@ class TPQueue {
         T* newItem = new T(std::move(item));
         if (isEmpty()) {
             head = tail = newItem;
+            return;
         }
-     
         T* temp = head;
         while (temp != nullptr && temp->prior >= newItem->prior) {
             temp = temp->nextCh;
-        }
-        
+        } 
         if (temp == nullptr) {
             tail->nextCh = newItem;
             newItem->prevCh = tail;
@@ -51,17 +50,13 @@ class TPQueue {
             head = tail = nullptr;
             return *temp;
         }
-      
         if (isEmpty()) {
             throw ("List is empty!");
         }
-      
         head = head->nextCh;
         head->prevCh = nullptr;
-
         return *temp;
     }
-
     bool isEmpty() const {
         return head == nullptr;
     }
