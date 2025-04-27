@@ -2,7 +2,6 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
-
 template<typename T>
 class TPQueue {
  T* head;
@@ -25,30 +24,30 @@ class TPQueue {
         }
 
         T* temp = head;
-        while (temp != nullptr && temp.prior >= newItem.prior ) {
+        while (temp != nullptr && temp->prior >= newItem->prior ) {
             temp = temp->nextCh;
         }
         
         if (temp == nullptr) {
             tail->nextCh = newItem;
-            newItem->prev = tail;
+            newItem->prevCh = tail;
             tail = newItem;
         }else if (temp == head) {
             newItem->nextCh = head;
-            head->prev = newItem;
+            head->prevCh = newItem;
             head = newItem;
         }else {
             newItem->nextCh = temp;
-            newItem->prev = temp.prev;
-            newItem->prev->nextCh = newItem;
-            temp->prev = newItem;
+            newItem->prevCh = temp.prevCh;
+            newItem->prevCh->nextCh = newItem;
+            temp->prevCh = newItem;
         }
     }
     
 
     T pop() {
-        if (head==tail){
-            head=tail=nullptr;
+        if (head==tail) {
+            head = tail = nullptr;
         }
         if (isEmpty()) {
             throw std::String("List is empty!");
@@ -56,7 +55,7 @@ class TPQueue {
 
         T* temp = head;
         head = head->nextCh;
-        head->prev = nullptr;
+        head->prevCh = nullptr;
 
         delete temp;
     }
@@ -70,7 +69,7 @@ struct SYM {
   char ch;
   int prior;
   SYM* nextCh = nullptr;
-  SYM* prev = nullptr;
+  SYM* prevCh = nullptr;
 };
 
 #endif  // INCLUDE_TPQUEUE_H_
