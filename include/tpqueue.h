@@ -2,6 +2,7 @@
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
 
+
 template<typename T>
 class TPQueue {
  T* head;
@@ -50,7 +51,7 @@ class TPQueue {
             head=tail=nullptr;
         }
         if (isEmpty()) {
-            throw std::string("List is empty!");
+            throw std::String("List is empty!");
         }
 
         T* temp = head;
@@ -69,7 +70,7 @@ struct SYM {
   char ch;
   int prior;
   SYM* nextCh = nullptr;
-  SYM* prev = nulptr;
+  SYM* prev = nullptr;
 };
 
 #endif  // INCLUDE_TPQUEUE_H_
